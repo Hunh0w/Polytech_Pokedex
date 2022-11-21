@@ -13,8 +13,15 @@
           <span :class="['typeword', pokemon_data.types[1].type.name]">{{ pokemon_data.types[1].type.name }}</span>
         </div>
       </div>
+      <div id="properties">
+        <span><b>HP:</b> {{ pokemon_data.hp }}</span>
+        <span><b>EXP:</b> {{ pokemon_data.experience }}</span>
+        <span><b>Taille:</b> {{ pokemon_data.height }}</span>
+        <span><b>Epaisseur:</b> {{ pokemon_data.weight }}</span>
+      </div>
       <div class="img-container">
         <img :src="pokemon_data.image" />
+        <h2 :class="[pokemon_data.types[0].type.name]"><em>#{{ pokemon_data.id }}</em></h2>
       </div>
       <div class="back-container">
         <button v-on:click="this.$router.back()">Retour</button>
@@ -36,6 +43,25 @@
   margin-top: 50px;
 }
 
+#properties {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 25px;
+  padding: 25px;
+  border: 2px dashed white;
+  border-radius: 25px;
+}
+
+#properties > * {
+  color: #ffffff;
+  font-size: 17pt;
+}
+
+#properties > * > b {
+  color: black;
+}
+
 .back-container > button {
   margin-left: 50px;
   margin-bottom: 20px;
@@ -54,17 +80,23 @@
   margin-top: 100px;
   width: 50%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+}
+#types > div {
+  margin-left: 20px;
+}
+#types > h1{
+  color: #343434;
 }
 .type {
   color: black;
   font-weight: bold;
-  background-color: #b9b9b9;
+  border: 3px dashed #4d4d4d;
   padding-inline: 10px;
   padding-top: 15px;
   padding-bottom: 10px;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 
@@ -95,7 +127,7 @@ section {
   align-items: center;
   flex-direction: column;
   width: 40%;
-  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  background-color: #757575;
   box-shadow: 0px 0px 37px 10px rgba(0,0,0,0.75);
   border-radius: 30px;
   margin-bottom: 50px;
@@ -105,7 +137,7 @@ aside {
   margin-right: 100px;
 }
 
-.grass {color: #04AA6D;}
+.grass {color: #15aa04;}
 .bug {color: #c4c4c4;}
 .water {color: aqua;}
 .electric {color: yellow;}
@@ -116,14 +148,14 @@ aside {
 .ghost {color: #3e3edc;}
 .fairy {color: #c25f29;}
 .normal {color: #a9faa5;}
-.poison {color: #3fd700;}
+.poison {color: #288600;}
 .dragon {color: #ff5f5f;}
 .fire {color: #ff0000;}
 .ice {color: #b0fff9;}
 .ground {color: sandybrown;}
 .fighting {color: brown;}
 
-.bg-grass {background-color: #04AA6D;}
+.bg-grass {background-color: #15aa04;}
 .bg-bug {background-color: #c4c4c4;}
 .bg-water {background-color: aqua;}
 .bg-electric {background-color: yellow;}
@@ -134,7 +166,7 @@ aside {
 .bg-ghost {background-color: #3e3edc;}
 .bg-fairy {background-color: #c25f29;}
 .bg-normal {background-color: #a9faa5;}
-.bg-poison {background-color: #3fd700;}
+.bg-poison {background-color: #288600;}
 .bg-dragon {background-color: #ff5f5f;}
 .bg-fire {background-color: #ff0000;}
 .bg-ice {background-color: #b0fff9;}
