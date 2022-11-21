@@ -61,7 +61,7 @@ export default {
     }
   },
   methods: {
-    getPokemons: async function(){
+    getPokemons: function(){
       let offset = this.getOffset();
       return fetch(`https://pokeapi.co/api/v2/pokemon?limit=${this.maxPokemons}&offset=${offset}`)
           .then((data) => data.json())
@@ -109,9 +109,11 @@ export default {
       return url.split("/")[6];
     }
   },
-  created: async function() {
-    await this.getLocales();
-    await this.getPokemons();
+  created: function() {
+    this.getLocales().then(() => {
+      this.getPokemons();
+    })
+
   }
 }
 </script>
